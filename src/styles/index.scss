@@ -1,0 +1,13 @@
+@import "./reset.scss";
+@import "./variables.scss";
+
+#root {
+  color: $color-white;
+  background-color: $color-dark;
+  width: 100vw;
+  height: 100vh;
+}
+
+a {
+  color: $color-main;
+}
