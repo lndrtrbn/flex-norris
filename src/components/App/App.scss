@@ -10,5 +10,13 @@
   .main {
     flex: 1;
     display: flex;
+
+    .content {
+      flex: 1;
+      padding: $space-xl;
+      display: flex;
+      flex-direction: column;
+      gap: $space-xl;
+    }
   }
 }

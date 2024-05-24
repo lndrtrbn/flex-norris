@@ -1,4 +1,6 @@
 import { useJokesContext } from "../../contexts/jokes.context";
+import About from "../About/About";
+import Block from "../Block/Block";
 import Header from "../Header/Header";
 import Sidebar from "../Sidebar/Sidebar";
 
@@ -15,6 +17,13 @@ export default function App() {
 
       <div className="main">
         <Sidebar />
+
+        <section className="content">
+          <Block title="List of jokes">ccsv</Block>
+          <Block title="About">
+            <About />
+          </Block>
+        </section>
       </div>
     </div>
   );
