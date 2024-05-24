@@ -1,4 +1,6 @@
 import { useJokesContext } from "../../contexts/jokes.context";
+import Header from "../Header/Header";
+import Sidebar from "../Sidebar/Sidebar";
 
 import "./App.scss";
 
@@ -9,18 +11,10 @@ export default function App() {
 
   return (
     <div className="app">
-      <div className="container">
-        <div className="flex">
-          <h2>{jokes.length}</h2>
-          <p>Chuck Norris jokes have been imported.</p>
-        </div>
-        <p>
-          Provided by{" "}
-          <a href="https://api.chucknorris.io" target="_blank">
-            https://api.chucknorris.io
-          </a>
-          .
-        </p>
+      <Header />
+
+      <div className="main">
+        <Sidebar />
       </div>
     </div>
   );

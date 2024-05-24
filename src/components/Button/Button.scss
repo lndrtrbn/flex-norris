@@ -1,0 +1,36 @@
+@import "../../styles/variables.scss";
+
+.button {
+  border: none;
+  cursor: pointer;
+  color: $color-white;
+  background-color: $color-main;
+  border-radius: $space-md;
+  padding: $space-xs $space-lg;
+  text-transform: capitalize;
+
+  &:hover {
+    color: $color-main;
+    background-color: $color-white;
+  }
+
+  &.fullSize {
+    width: 100%;
+  }
+
+  &[disabled] {
+    color: $color-white40;
+    background-color: $color-main20;
+    pointer-events: none;
+  }
+
+  &.off {
+    color: $color-white80;
+    background-color: $color-main40;
+
+    &:hover {
+      color: $color-main;
+      background-color: $color-white;
+    }
+  }
+}

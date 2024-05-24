@@ -1,0 +1,22 @@
+@import "../../styles/variables.scss";
+
+.sidebar {
+  height: 100%;
+  width: 200px;
+  padding: $space-lg;
+  background-color: $color-main05;
+  border-right: $space-xs solid $color-white20;
+
+  display: flex;
+  flex-flow: column;
+  gap: $space-md;
+
+  .categories {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: start;
+    justify-content: stretch;
+    margin-bottom: auto;
+    gap: $space-md;
+  }
+}
