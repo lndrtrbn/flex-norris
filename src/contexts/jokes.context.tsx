@@ -58,9 +58,21 @@ export function useJokesContext() {
     });
   }
 
+  function unselectAllCategories() {
+    const [, setCategories] = activeCategories;
+    setCategories(new Set());
+  }
+
+  function selectAllCategories() {
+    const [, setCategories] = activeCategories;
+    setCategories(new Set(JOKE_CATEGORIES));
+  }
+
   return {
     jokes: jokes[0],
     activeCategories: activeCategories[0],
     toggleCategory,
+    unselectAllCategories,
+    selectAllCategories,
   };
 }

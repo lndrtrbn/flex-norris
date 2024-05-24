@@ -19,4 +19,11 @@
     margin-bottom: auto;
     gap: $space-md;
   }
+
+  .separator {
+    background: $color-white40;
+    height: $space-xs;
+    width: 100%;
+    margin: $space-md $space-sm;
+  }
 }

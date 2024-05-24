@@ -5,7 +5,12 @@ import Button from "../Button/Button";
 import "./Sidebar.scss";
 
 export default function Sidebar() {
-  const { activeCategories, toggleCategory } = useJokesContext();
+  const {
+    activeCategories,
+    toggleCategory,
+    unselectAllCategories,
+    selectAllCategories,
+  } = useJokesContext();
 
   return (
     <section className="sidebar">
@@ -22,6 +27,15 @@ export default function Sidebar() {
             {category}
           </Button>
         ))}
+
+        <div className="separator" />
+
+        <Button fullSize onClick={() => unselectAllCategories()}>
+          Unselect All
+        </Button>
+        <Button fullSize onClick={() => selectAllCategories()}>
+          Select All
+        </Button>
       </div>
 
       <a href="https://api.chucknorris.io/" target="_blank">
