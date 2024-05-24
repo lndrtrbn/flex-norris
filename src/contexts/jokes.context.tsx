@@ -1,14 +1,25 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { ApiJokeResult, Joke } from "../utils/joke";
+import {
+  ApiJokeResult,
+  JOKE_CATEGORIES,
+  Joke,
+  JokeCategory,
+} from "../utils/joke";
 import { ContextData, ProviderProps } from "./context.type";
 import axios from "axios";
 
-type Context = ContextData<Joke[]>;
+type Context = {
+  jokes: ContextData<Joke[]>;
+  activeCategories: ContextData<Set<JokeCategory>>;
+};
 const JokesContext = createContext<Context | undefined>(undefined);
 
 export function JokesProvider({ children }: ProviderProps) {
-  const jokeState = useState<Joke[]>([]);
-  const [, setJokes] = jokeState;
+  const jokes = useState<Joke[]>([]);
+  const activeCategories = useState<Set<JokeCategory>>(
+    new Set(JOKE_CATEGORIES)
+  );
+  const [, setJokes] = jokes;
 
   useEffect(() => {
     const fetchJokes = async () => {
@@ -20,7 +31,9 @@ export function JokesProvider({ children }: ProviderProps) {
   }, []);
 
   return (
-    <JokesContext.Provider value={jokeState}>{children}</JokesContext.Provider>
+    <JokesContext.Provider value={{ jokes, activeCategories }}>
+      {children}
+    </JokesContext.Provider>
   );
 }
 
@@ -30,6 +43,24 @@ export function useJokesContext() {
     throw new Error("useJokesContext must be used within a JokesProvider");
   }
 
-  const [jokes] = context;
-  return { jokes };
+  const { jokes, activeCategories } = context;
+
+  function toggleCategory(category: JokeCategory) {
+    const [, setCategories] = activeCategories;
+    setCategories((currentCategories) => {
+      const newCategories = new Set(currentCategories);
+      if (newCategories.has(category)) {
+        newCategories.delete(category);
+      } else {
+        newCategories.add(category);
+      }
+      return newCategories;
+    });
+  }
+
+  return {
+    jokes: jokes[0],
+    activeCategories: activeCategories[0],
+    toggleCategory,
+  };
 }

@@ -1,4 +1,4 @@
-const JOKE_CATEGORIES = [
+export const JOKE_CATEGORIES = [
   "animal",
   "career",
   "celebrity",
