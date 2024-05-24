@@ -1,14 +1,20 @@
 @import "../../styles/variables.scss";
 
-.block {
-  max-height: 800px;
-}
-
 .blockContent {
   margin-top: $space-md;
   padding: $space-lg $space-xl;
   background: $color-white05;
   border: 1px solid $color-white20;
   border-radius: $space-sm;
+  max-height: 500px;
   overflow-y: auto;
+}
+
+.blockHeader {
+  display: flex;
+  align-items: center;
+
+  h2 {
+    flex: 1;
+  }
 }

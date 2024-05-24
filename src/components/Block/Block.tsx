@@ -5,12 +5,16 @@ import "./Block.scss";
 type Props = {
   children: ReactNode;
   title: string;
+  contextual?: ReactNode;
 };
 
-export default function Block({ children, title }: Props) {
+export default function Block({ children, title, contextual }: Props) {
   return (
     <div className="block">
-      <h2>{title}</h2>
+      <div className="blockHeader">
+        <h2>{title}</h2>
+        {contextual}
+      </div>
       <section className="blockContent">{children}</section>
     </div>
   );

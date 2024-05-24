@@ -1,0 +1,11 @@
+@import "../../styles/variables.scss";
+
+.search {
+  outline: none;
+  border: 0;
+  background: $color-main40;
+  color: $color-white;
+  padding: $space-sm $space-lg;
+  border-radius: $space-sm;
+  width: 400px;
+}

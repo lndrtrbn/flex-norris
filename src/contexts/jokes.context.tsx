@@ -11,13 +11,15 @@ import axios from "axios";
 type Context = {
   jokes: ContextData<Joke[]>;
   activeCategories: ContextData<Set<JokeCategory>>;
+  searchValue: ContextData<string>;
 };
 const JokesContext = createContext<Context | undefined>(undefined);
 
 export function JokesProvider({ children }: ProviderProps) {
   const jokes = useState<Joke[]>([]);
+  const searchValue = useState("");
   const activeCategories = useState<Set<JokeCategory>>(
-    new Set(JOKE_CATEGORIES)
+    new Set(["animal", "history", "sport", "travel", "food", "movie"])
   );
   const [, setJokes] = jokes;
 
@@ -31,7 +33,7 @@ export function JokesProvider({ children }: ProviderProps) {
   }, []);
 
   return (
-    <JokesContext.Provider value={{ jokes, activeCategories }}>
+    <JokesContext.Provider value={{ jokes, activeCategories, searchValue }}>
       {children}
     </JokesContext.Provider>
   );
@@ -43,7 +45,7 @@ export function useJokesContext() {
     throw new Error("useJokesContext must be used within a JokesProvider");
   }
 
-  const { jokes, activeCategories } = context;
+  const { jokes, activeCategories, searchValue } = context;
 
   function toggleCategory(category: JokeCategory) {
     const [, setCategories] = activeCategories;
@@ -74,5 +76,7 @@ export function useJokesContext() {
     toggleCategory,
     unselectAllCategories,
     selectAllCategories,
+    searchValue: searchValue[0],
+    setSearch: searchValue[1],
   };
 }

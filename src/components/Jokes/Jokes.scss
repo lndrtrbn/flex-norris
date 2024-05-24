@@ -1,0 +1,7 @@
+@import "../../styles/variables.scss";
+
+.jokes {
+  display: flex;
+  flex-direction: column;
+  gap: $space-xl;
+}

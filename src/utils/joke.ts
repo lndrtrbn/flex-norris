@@ -45,4 +45,12 @@ export class Joke {
     this.url = apiJoke.url;
     this.value = apiJoke.value;
   }
+
+  hasCategory(categories: Set<JokeCategory>) {
+    return this.categories.some((category) => categories.has(category));
+  }
+
+  matchSearch(value: string) {
+    return this.value.toLowerCase().includes(value.toLowerCase());
+  }
 }
